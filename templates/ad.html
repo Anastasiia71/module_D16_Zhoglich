@@ -1,0 +1,16 @@
+{% extends 'flatpages/default.html' %}
+
+
+{% block title %}
+Ad
+{% endblock title %}
+
+{% block content %}
+<h1>{{ ad.title }}</h1>
+<h2>{{ ad.content }}</h2>
+<h4>
+    {% if perms.ads.response_create %}
+    <a href="{% url 'response_create'%}">Оставить отклик</a>
+    {% endif %}
+</h4>
+{% endblock content %}

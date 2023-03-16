@@ -1,0 +1,16 @@
+{% extends 'flatpages/default.html' %}
+
+
+{% block title %}
+Response
+{% endblock title %}
+
+{% block content %}
+<h1>{{ response.ad }}</h1>
+<h2>{{ response.text }}</h2>
+<h4>
+    {% if perms.ads.response_delete %}
+    <a href="{% url 'response_delete' pk=response.id %}">Удалить</a>
+    {% endif %}
+</h4>
+{% endblock content %}

@@ -1,0 +1,37 @@
+{% extends 'flatpages/default.html' %}
+
+{% block title %}
+Responses
+{% endblock title %}
+
+{% block content %}
+    <h1>Отклики</h1>
+    <form action="" method="get">
+       {{ filterset.form.as_p }}
+       <input type="submit" value="Найти" />
+   </form>
+    <hr>
+    {% if responses %}
+        <table>
+           <tr>
+               <td>Автор</td>
+               <td>Объявление</td>
+               <td>Текст</td>
+               <td>Статус</td>
+           </tr>
+
+            {% for response in responses %}
+            <tr>
+                <td>{{ response.author }}</td>
+                <td>{{ response.ad }}</td>
+                <td>
+                    <a href="{% url 'response_detail' response.id %}">{{ response.text|truncatechars:15 }}</td>
+                <td>{{ response.status }}</td>
+            </tr>
+            {% endfor %}
+
+        </table>
+    {% else %}
+        <h2>Пока откликов нет</h2>
+    {% endif %}
+{% endblock content %}
